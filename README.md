@@ -1,3 +1,3 @@
 # README
 
-`@umijs/max` 模板项目，更多功能参考 [Umi Max 简介](https://umijs.org/docs/max/introduce)
+利用语音输入命令，然后通过本地部署或者在线的大模型来解析解析命令来生成脚本操作来进行对应修改的管理系统

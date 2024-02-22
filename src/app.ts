@@ -8,7 +8,7 @@ export async function getInitialState(): Promise<{ name: string }> {
 
 export const layout = () => {
   return {
-    logo: './src/assets/1.icon',
+    logo: 'https://tosuke.top/upload/1.ico',
     menu: {
       locale: false,
     },
