@@ -9,6 +9,16 @@ export default defineConfig({
   layout: {
     title: '智能教室管理系统',
   },
+  qiankun: {
+    master: {
+      apps: [
+        {
+          name: 'app1',
+          entry: '//localhost:7001',
+        },
+      ],
+    },
+  },
   routes: [
     {
       path: '/',
@@ -18,6 +28,11 @@ export default defineConfig({
       name: '首页',
       path: '/home',
       component: './Home',
+    },
+    {
+      name: '教室使用情况',
+      path: '/RoomState',
+      component: './RoomState',
     },
     {
       name: '权限演示',
@@ -32,4 +47,3 @@ export default defineConfig({
   ],
   npmClient: 'pnpm',
 });
-

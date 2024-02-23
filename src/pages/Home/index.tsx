@@ -10,6 +10,7 @@ const HomePage: React.FC = () => {
     <PageContainer ghost>
       <div className={styles.container}>
         <Guide name={trim(name)} />
+        空闲教室、使用中教室、已预订教室、拥挤度、利用率、
       </div>
     </PageContainer>
   );
