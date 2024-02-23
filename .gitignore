@@ -9,5 +9,7 @@
 /.umi-production
 /.umi-test
 /dist
+/dist.zip
 /.mfsu
+/api/node_modules
 .swc

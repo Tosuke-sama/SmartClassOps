@@ -1,6 +1,6 @@
 {
   "private": true,
-  "author": "",
+  "author": "Tosuke",
   "scripts": {
     "dev": "max dev",
     "build": "max build",

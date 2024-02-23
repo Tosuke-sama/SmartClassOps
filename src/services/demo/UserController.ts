@@ -15,7 +15,7 @@ export async function queryUserList(
   },
   options?: { [key: string]: any },
 ) {
-  return request<API.Result_PageInfo_UserInfo__>('/api/v1/queryUserList', {
+  return request<API.Result_PageInfo_UserInfo__>('http://localhost:3000/api/v1/queryUserList', {
     method: 'GET',
     params: {
       ...params,
