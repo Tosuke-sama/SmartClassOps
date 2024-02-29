@@ -5,16 +5,17 @@ export default defineConfig({
   access: {},
   model: {},
   initialState: {},
-  request: {},
-  layout: {
-    title: '智能教室管理系统',
+  mfsu: {
+    shared: { react: { singleton: true } },
   },
+  request: {},
+  layout: {},
   qiankun: {
     master: {
       apps: [
         {
           name: 'app1',
-          entry: '//localhost:7001',
+          entry: 'http://localhost:8005',
         },
       ],
     },
@@ -32,17 +33,32 @@ export default defineConfig({
     {
       name: '教室使用情况',
       path: '/RoomState',
-      component: './RoomState',
+      component: './analysis',
+    },
+    {
+      name: '登录',
+      path: '/Login',
+      component: './Login',
     },
     {
       name: '权限演示',
-      path: '/access',
-      component: './Access',
-    },
-    {
-      name: ' CRUD 示例',
-      path: '/table',
-      component: './Table',
+      path: '/test',
+      routes: [
+        {
+          path: '/test',
+          redirect: '/test/access',
+        },
+        {
+          name: '权限演示',
+          path: '/test/access',
+          component: './Access',
+        },
+        {
+          name: ' CRUD 示例',
+          path: '/test/table',
+          component: './Table',
+        },
+      ],
     },
   ],
   npmClient: 'pnpm',

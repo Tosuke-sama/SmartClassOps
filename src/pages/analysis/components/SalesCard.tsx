@@ -16,7 +16,7 @@ const rankingListData: {
 
 for (let i = 0; i < 7; i += 1) {
   rankingListData.push({
-    title: `工专路 ${i} 号店`,
+    title: `${i} 号教室`,
     total: 323234,
   });
 }
@@ -91,7 +91,7 @@ const SalesCard = ({
           items={[
             {
               key: 'sales',
-              label: '销售额',
+              label: '使用量',
               children: (
                 <Row>
                   <Col xl={16} lg={12} md={12} sm={24} xs={24}>
@@ -116,7 +116,7 @@ const SalesCard = ({
                           x: { paddingInner: 0.4 },
                         }}
                         tooltip={{
-                          name: '销售量',
+                          name: '使用量',
                           channel: 'y',
                         }}
                       />
@@ -152,7 +152,7 @@ const SalesCard = ({
             },
             {
               key: 'views',
-              label: '访问量',
+              label: '预定量',
               children: (
                 <Row>
                   <Col xl={16} lg={12} md={12} sm={24} xs={24}>
@@ -175,7 +175,7 @@ const SalesCard = ({
                           x: { paddingInner: 0.4 },
                         }}
                         tooltip={{
-                          name: '访问量',
+                          name: '预定量',
                           channel: 'y',
                         }}
                       />

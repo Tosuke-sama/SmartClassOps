@@ -98,6 +98,13 @@ const Analysis: FC<AnalysisProps> = () => {
   };
   const activeKey =
     currentTabKey || (data?.offlineData[0] && data?.offlineData[0].name) || '';
+  const salesData = [];
+  for (let i = 0; i < 12; i += 1) {
+    salesData.push({
+      x: `${i + 1}月`,
+      y: Math.floor(Math.random() * 1000) + 200,
+    });
+  }
   return (
     <GridContent>
       <>
@@ -108,7 +115,7 @@ const Analysis: FC<AnalysisProps> = () => {
         <Suspense fallback={null}>
           <SalesCard
             rangePickerValue={rangePickerValue}
-            salesData={data?.salesData || []}
+            salesData={data?.salesData || salesData}
             isActive={isActive}
             handleRangePickerChange={handleRangePickerChange}
             loading={loading}
