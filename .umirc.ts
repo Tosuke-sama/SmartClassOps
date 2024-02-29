@@ -62,4 +62,6 @@ export default defineConfig({
     },
   ],
   npmClient: 'pnpm',
+  headScripts: ['./umi.js'],
+  links: [{ href: './umi.css' }],
 });
