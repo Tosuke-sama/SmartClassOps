@@ -1,5 +1,6 @@
 {
   "private": true,
+  "homepage": "https://Tosuke-sama.github.io/github-actions-demo",
   "author": "Tosuke",
   "scripts": {
     "build": "max build",
