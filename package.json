@@ -1,6 +1,6 @@
 {
   "private": true,
-  "homepage": "https://Tosuke-sama.github.io/github-actions-demo",
+  "homepage": "https://Tosuke-sama.github.io/SmartClassOps",
   "author": "Tosuke",
   "scripts": {
     "build": "max build",

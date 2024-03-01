@@ -5,6 +5,7 @@ export default defineConfig({
   access: {},
   model: {},
   initialState: {},
+  publicPath: '/SmartClassOps/',
   mfsu: {
     shared: { react: { singleton: true } },
   },
@@ -62,6 +63,4 @@ export default defineConfig({
     },
   ],
   npmClient: 'pnpm',
-  headScripts: ['./umi.js'],
-  links: [{ href: './umi.css' }],
 });
