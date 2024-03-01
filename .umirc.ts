@@ -6,6 +6,9 @@ export default defineConfig({
   model: {},
   initialState: {},
   publicPath: '/SmartClassOps/',
+  history: {
+    type: 'hash',
+  },
   mfsu: {
     shared: { react: { singleton: true } },
   },
