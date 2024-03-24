@@ -2,12 +2,12 @@
   "name": "api",
   "version": "1.0.0",
   "description": "作为智能系统的后端处理",
+  "license": "ISC",
+  "author": "Tosuke",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec ts-node index.ts"
   },
-  "author": "Tosuke",
-  "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.21",
     "cors": "^2.8.5",
@@ -15,11 +15,13 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "crypto-js": "^3.1.9-1",
     "nodemon": "^3.1.0",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.2"
+    "webpack-dev-server": "^5.0.2",
+    "ws": "^7.1.2"
   }
 }

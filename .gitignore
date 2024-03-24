@@ -13,3 +13,4 @@
 /.mfsu
 /api/node_modules
 .swc
+.vscode/settings.json

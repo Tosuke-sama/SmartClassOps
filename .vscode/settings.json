@@ -1,4 +1,7 @@
 {
   "search.useIgnoreFiles": true,
-  "search.useGlobalIgnoreFiles": true
+  "search.useGlobalIgnoreFiles": true,
+  "cSpell.words": [
+    "Soundrecord"
+  ]
 }

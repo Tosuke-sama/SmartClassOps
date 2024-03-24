@@ -3,14 +3,33 @@
  */
 import cors from 'cors';
 import express, { Request, Response } from 'express';
+import postrouter from './routes/posts';
+import VoiceTrans from './utils/iat-ws-node';
+// import authrouter from "./routes/auth";
+// import userrouter from "./routes/users";
+import WebSocket from 'ws';
+
+const wss = new WebSocket.Server({ port: 8080 });
+let chunks: any = [];
+wss.on('connection', (ws) => {
+  ws.binaryType = 'arraybuffer'; // 设置接收二进制数据
+
+  ws.on('message', async (message) => {
+    // message将是ArrayBuffer类型
+    //processAudioData(message);
+
+    chunks.push(message);
+    const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+    VoiceTrans(blob);
+    // console.log(base64String);
+  });
+
+  // 如果你想使用箭头函数，可以进一步简化为：
+  // ws.on('message', (message) => processAudioData(message));
+});
 
 const app = express();
 
-// 模拟用户数据
-const users = [
-  { id: 0, name: 'Umi', nickName: 'U', gender: 'MALE' },
-  { id: 1, name: 'Fish', nickName: 'B', gender: 'FEMALE' },
-];
 const login = [{ name: 'Tosuke', password: '123' }];
 
 app.use(
@@ -23,17 +42,7 @@ app.use(
 app.use(express.json());
 
 // 处理 /api/v1/queryUserList GET 请求
-app.get('/api/v1/queryUserList', (req: Request, res: Response) => {
-  // 解析查询参数
-  const { current, pageSize, sorter, filter } = req.query;
-  console.log(current, pageSize, sorter, filter);
-  // 这里可以根据查询参数对 userList 进行筛选、排序等操作，这里简单返回全部用户数据
-  res.json({
-    success: true,
-    data: { list: users },
-    errorCode: 0,
-  });
-});
+app.use('/api/v1', postrouter);
 
 app.post('/api/v1/login', (req: Request, res: Response) => {
   // 解析查询参数
