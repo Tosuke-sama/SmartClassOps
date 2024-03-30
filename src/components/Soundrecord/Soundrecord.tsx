@@ -5,13 +5,14 @@ import { Layout } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import WebSocketService from '../../utils/websocket';
 import Voice from './utils/voice';
+
 // interface Props{
 
 // }
 const wsService = new WebSocketService('ws://localhost:8080/audio');
 wsService.onOpen(() => console.log('WebSocket connected'));
 const Soundrecord: React.FC = () => {
-  // const [stream, setStream] = useState(null);
+  const [stream, setStream] = useState(null);
   const [recorder, setRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   // const [recordedBlobUrl, setRecordedBlobUrl] = useState(null);

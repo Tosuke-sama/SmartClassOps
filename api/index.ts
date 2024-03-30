@@ -4,29 +4,51 @@
 import cors from 'cors';
 import express, { Request, Response } from 'express';
 import postrouter from './routes/posts';
-import VoiceTrans from './utils/iat-ws-node';
+import audio from './utils/audio'
 // import authrouter from "./routes/auth";
 // import userrouter from "./routes/users";
 import WebSocket from 'ws';
+import fs from 'fs'
 
 const wss = new WebSocket.Server({ port: 8080 });
-let chunks: any = [];
 wss.on('connection', (ws) => {
-  ws.binaryType = 'arraybuffer'; // 设置接收二进制数据
-
+  let askMsg:any = [];
   ws.on('message', async (message) => {
-    // message将是ArrayBuffer类型
-    //processAudioData(message);
+    
+    let messageAsText = String(message);
+    if(messageAsText == 'false'){
+      let len = askMsg.length;
+      audio(askMsg[len-1]).then(() => {
+        console.log("语音转换完毕2");
+          // 读取MP3文件为ArrayBuffer
+          fs.readFile('./test.mp3', (err, data) => {
+            if (err) {
+              console.error('Error reading MP3 file:', err);
+              return;
+            }
+            
+            const arrayBuffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+            const uint8Array = new Uint8Array(arrayBuffer);
+        
+            // 分块发送
+            const chunkSize = 1024 * 1024; // 示例中设定每块大小为1MB，可根据实际情况调整
+            for (let offset = 0; offset < uint8Array.byteLength; offset += chunkSize) {
+              const chunk = uint8Array.subarray(offset, offset + chunkSize);
+              ws.send(chunk);
+            }
+            ws.send("false");
+            console.log('MP3 file sent successfully');
+          });
+      })
+      console.log(askMsg[len-1]);
+    }
+    askMsg.push(messageAsText);
 
-    chunks.push(message);
-    const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
-    VoiceTrans(blob);
-    // console.log(base64String);
-  });
 
-  // 如果你想使用箭头函数，可以进一步简化为：
-  // ws.on('message', (message) => processAudioData(message));
+  })
+  
 });
+  
 
 const app = express();
 

@@ -19,7 +19,11 @@ export default defineConfig({
       apps: [
         {
           name: 'app1',
-          entry: 'http://localhost:8005',
+          entry: 'http://localhost:8001',
+        },
+        {
+          name: 'app2',
+          entry: 'http://localhost:8001',
         },
       ],
     },

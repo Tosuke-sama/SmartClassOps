@@ -1,0 +1,47 @@
+.main {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  top: 25%;
+  right: 0;
+  width: 500px;
+  height: 70%;
+  z-index: 9;
+  border-radius: 10%;
+  background-color: white;
+  transition: right 0.3s ease-in-out; /* 添加过渡效果 */
+  animation-name: sidebar-jelly;
+  animation-duration: 0.8s; /* 调整动画持续时间以适应弹性效果 */
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 选用一个接近果冻回弹的缓动函数 */
+ }
+
+ @keyframes sidebar-jelly {
+  0% { right: -480px; }
+  50% { right: 0; transform: scale(1.1); /* 模拟轻微拉伸 */ }
+  100% { right: 0; transform: scale(1); /* 回弹 */ }
+}
+
+@keyframes sidebar-retract-jelly {
+  0% { right: 0; transform: scaleX(1); }
+  50% { right: -480px; transform: scale(0.9); /* 模拟轻微压缩 */ }
+  100% { right: -480px; transform: scale(1); }
+}
+
+
+/* 应用收回动画到隐藏状态下的侧边栏 */
+.sidebar-hidden {
+  right: -480px;
+  animation-name: sidebar-retract-jelly;
+  animation-duration: 0.8s; /* 调整动画持续时间以适应弹性效果 */
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 同样选用一个接近果冻回弹的缓动函数 */
+}
+
+/* 保持显示状态下的侧边栏样式 */
+.sidebar-visible {
+  right: 0;
+  animation-name: sidebar-jelly; /* 如果也需要显示时有弹性效果，则保留之前的动画 */
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
