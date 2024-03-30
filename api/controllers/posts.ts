@@ -4,7 +4,6 @@
 
 // 模拟用户数据
 import { Request, Response } from 'express';
-import audio from '../utils/audio'
 const users = [
   { id: 0, name: 'Umi', nickName: 'U', gender: 'MALE' },
   { id: 1, name: 'Fish', nickName: 'B', gender: 'FEMALE' },

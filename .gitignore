@@ -14,3 +14,6 @@
 /api/node_modules
 .swc
 .vscode/settings.json
+/minifront/node_modules
+/minifront/.umi
+/minifront/src/.umi
